@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+// inteiros
+void scannear(int conj[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d", conj[i]);
+        if (i < size - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");   
+}
+
+int main() {
+    int valor[10];
+    int nconj[10];
+    int tconj = 10;
+
+    // Entrada de dados
+    for (int i = 0; i < tconj; i++) {
+        scanf("%d", &valor[i]);
+    }
+
+    scannear(valor, tconj);
+
+    // recomecar
+    while (tconj > 1) {
+        for (int i = 0; i < tconj - 1; i++) {
+            nconj[i] = valor[i] + valor[i + 1];
+        }
+
+        tconj--;
+
+        scannear(nconj, tconj);
+
+        for (int i = 0; i < tconj; i++) {
+            valor[i] = nconj[i];
+        }
+    }
+
+    return 0;
+}
